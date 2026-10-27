@@ -12,13 +12,13 @@
 
 **c) Missing information:**
 
-- Dates and times of the three failures, her shift start time on those days, and the matching access-control event log entries
-- Whether she arrived before her shift started
-- Whether other badges also fail at the North door, whether hers works at other doors, and whether her badge was recently replaced or damaged
-- What the reader did (error message, light or beep, or no response), and the North door reader's ID or log identifier
-- Her badge serial number or RFID ID, and her access group and schedule as configured, plus any recent schedule changes
+- Dates and times of the three failures, her shift start time on those days, and the matching access-control event log entries.
+- Whether she arrived before her shift started.
+- Whether other badges also fail at the North door, whether hers works at other doors, and whether her badge was recently replaced or damaged.
+- What the reader did (error message, light or beep, or no response), and the North door reader's ID or log identifier.
+- Her badge serial number or RFID ID, and her access group and schedule as configured, plus any recent schedule changes.
 
-**d) Next action:** Do not escalate to Development. Acknowledge the frustration, check the access logs for her badge at the North door on those dates, and ask the client the clarifying questions above. If the logs show "denied: outside schedule", coordinate with the Client Account / Shift-Schedule Configuration team (see Task 4b). If the logs show no read at all, escalate to Hardware.
+**d) Next action:** Ask the client a clarifying question and coordinate internally; do not escalate to Development yet. Acknowledge the frustration, check the access logs for her badge at the North door on those dates, and send the client the questions above. If the logs show "denied: outside schedule", coordinate with the Client Account / Shift-Schedule Configuration team. If the logs show no read at all, escalate to Hardware. Because her failures happen before her shift, ask the configuration team to confirm her schedule window before her next shift and, if the window is the cause, to apply an interim fix. Reply to Maria with an apology and an update on what we are checking.
 
 ### Ticket 2 – Positioning system down, whole plant (Site Manager, Client A, Plant B)
 
@@ -28,13 +28,13 @@
 
 **c) Missing information:**
 
-- Exact time the map froze (and the last successful update), and whether anything changed beforehand (update, maintenance, power or network outage)
-- Whether the map is frozen for every tag or only some, and whether only the wall screens are frozen or the admin portal shows stale data too
-- Whether tags are still active (LEDs or signals), whether anchors or gateways show as online, and the health of the RTLS service and data ingestion
-- Whether other plants or clients are affected
-- Any error messages or screenshots
+- Exact time the map froze (and the last successful update), and whether anything changed beforehand (update, maintenance, power or network outage).
+- Whether the map is frozen for every tag or only some, and whether only the wall screens are frozen or the admin portal shows stale data too.
+- Whether tags are still active (LEDs or signals), whether anchors or gateways show as online, and the health of the RTLS service and data ingestion.
+- Whether other plants or clients are affected.
+- Any error messages or screenshots.
 
-**d) Next action:** Escalate immediately to Development or the on-call engineer, and notify the Hardware/infrastructure contact in parallel. Run a few quick checks first (connectivity, service health, screen refresh, admin portal, other clients' status), but do not wait for the client's answers before escalating. Reply to the client within minutes: confirm it is being treated as P1, advise them to follow their established safe operating procedure for forklift movements (for example spotters or restricted movement near the dock) and not rely on the frozen map until live tracking is confirmed restored, and promise regular updates.
+**d) Next action:** Escalate immediately to Development or the on-call engineer, and notify the Hardware/infrastructure contact in parallel. Run a few quick checks first (connectivity, service health, screen refresh, admin portal, whether other clients' maps are also affected), but do not wait for the client's answers before escalating. Reply to the client within minutes: confirm it is being treated as P1, advise them to follow their established safe operating procedure for forklift movements (for example spotters or restricted movement near the dock) and not rely on the frozen map until live tracking is confirmed restored, and promise regular updates.
 
 ### Ticket 3 – Numbers look off (Client B)
 
@@ -42,7 +42,15 @@
 
 **b) Severity & priority:** Severity **cannot be rated yet**; provisionally Low-to-Medium. Priority **Medium**: wrong monitoring data may be driving decisions, so the client should get a fast reply, but nothing indicates an outage.
 
-**c) Missing information:** Which machine-monitoring metric looks wrong, and on which machine ID(s) or line; the expected versus displayed values; the time period and timestamps; when it started; whether one user or several see it; whether the machine was running during that period; whether anything changed recently (machine swapped, settings changed, new shift); a screenshot or export, with the relevant data-source context.
+**c) Missing information:**&#32;
+
+- Which machine-monitoring metric looks wrong, and on which machine ID(s) or line.
+- The expected versus displayed values.
+- The time period and timestamps, and when it started.
+- Whether one user or several see it.
+- Whether the machine was running during that period.
+- Whether anything changed recently (machine swapped, settings changed, new shift).
+- A screenshot or export, with the relevant data-source context.
 
 **d) Next action:** Ask the client for a concrete example, with the expected value and its source. Do not guess or escalate until it is clear whether the data is actually wrong or just differently understood. Then compare the screen with the source data for the same timestamps; if the mismatch is reproducible after validating filters and configuration, log it as a bug with that evidence and escalate to Development.
 
@@ -125,11 +133,11 @@
 
 ### a) Escalation to Development (Ticket 2)
 
-P1 – Client A, Plant B: live RTLS map frozen since last night on all wall screens; forklift and staff positions are not updating. The site relies on it for loading-dock safety.
+@dev-oncall P1 – Client A, Plant B: live RTLS map frozen since last night on all wall screens; forklift and staff positions are not updating. The site relies on it for loading-dock safety.
 
 Checked: multiple screens affected, so not a single missing tag; admin portal shows the same stale positions; no known maintenance; other clients' maps normal.
 
-Requested last-known-good time and screenshots. Client told to use manual spotters meanwhile.
+Requested last-known-good time and screenshots. Client advised to follow their established safe operating procedure meanwhile.
 
 Need from Dev: check RTLS service/ingestion health, recent deployments and logs, and advise ownership and ETA.
 
@@ -139,7 +147,7 @@ Hi Configuration team – Maria S. (Shift Supervisor, Client A) says her badge f
 
 Please check: (1) her account, badge status and North-door permissions; (2) her shift-schedule access window; (3) recent access changes, and whether she should have been authorised at those times.
 
-If configuration is correct, I'll continue with reader checks and escalate to Hardware. Could you reply by end of day tomorrow?
+If configuration is correct, I'll continue with reader checks and escalate to Hardware. Could you reply today, before her next shift?
 
 ## Task 5 — Optional Bonus: Technical Curiosity
 
